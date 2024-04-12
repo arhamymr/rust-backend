@@ -2,33 +2,70 @@
 
 API Spesification
 
-### 1. Authentication (on progress)
+### 1. Authentication
 
-- Authentication Flow with OAuth 2.0
-  - Client Request an access token by sending POST request to the token endpoint with client credential (client ID and secret), grant-type and scope
-  - The API Server validates the client credentials and issues an access token if authentication is successful
-  - Client include the access token in Authorization header of subsequent API requests to access protected resources
-- Grant-type
-  - Authorization code
-  - Password
-  - Refresh Token
-  - Client Credentials
+- Client Registration
+
+  - Endpoint: POST /register
+  - Request Body:
+    - `name`: name of the client
+  - Response
+    - `client_id` : [Go to Client ID](#12-client-id)
+    - `client_secret`: The secret key for the client
+    - `registered_at`: The timestamp when client was registered
+
 -
 
-### 2. Product Management
+### 2. Authorization [RFC 6749]
 
-### 3. Orders
+API using RFC 6749 -> https://datatracker.ietf.org/doc/html/rfc6749
 
-### 4. Customers
+- Access Token Request
 
-### 5. Payments
+  Endpoint: POST /token
+  Request Body:
 
-### 6. Reviews and Ratings
+  - `client_id`:
+  - `client_secret`:
+  - `grant_type:
+  - The API Server validates the client credentials and issues an access token if authentication is successful
+  - Client include the access token in Authorization header of subsequent API requests to access protected resources
 
-### 7. Search and Filterst
+- Grant-type
 
-### 8. Analytic and Reporting
+  - Authorization code
+    TODO !!
+  - Password (Resource Owner Password Crendentials)
+    Endpont
 
-### 9. Error Handling and Validation
+    POST /login
+    Content-Type:
 
-### 10. Documentatio and Testing
+    Response:
+
+  - Refresh Token
+    TODO !!
+  - Client Credentials
+    TODO !!
+
+- Scope
+
+### 3. Product Management
+
+### 4. Orders
+
+### 5. Customers
+
+### 6. Payments
+
+### 7. Reviews and Ratings
+
+### 8. Search and Filterst
+
+### 9. Analytic and Reporting
+
+### 10. Error Handling and Validation
+
+### 11. Documentatio and Testing
+
+### 12. Client ID
