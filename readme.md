@@ -11,7 +11,7 @@ API Spesification
     - `name`: name of the client
   - Response
     - `client_id` : [Go to Client ID](#12-client-id)
-    - `client_secret`: The secret key for the client
+    - `client_secret`: [Go to Client Secret](#13-client-secret)
     - `registered_at`: The timestamp when client was registered
 
 -
@@ -25,30 +25,16 @@ API using RFC 6749 -> https://datatracker.ietf.org/doc/html/rfc6749
   Endpoint: POST /token
   Request Body:
 
-  - `client_id`:
-  - `client_secret`:
-  - `grant_type:
-  - The API Server validates the client credentials and issues an access token if authentication is successful
-  - Client include the access token in Authorization header of subsequent API requests to access protected resources
+  - `client_id`: [Go to Client ID](#12-client-id)
+  - `client_secret`: [Go to Client Secret](#13-client-secret)
+  - `grant_type`: [Go to Grant-Type](#14-grant-type)
 
-- Grant-type
+  response:
 
-  - Authorization code
-    TODO !!
-  - Password (Resource Owner Password Crendentials)
-    Endpont
-
-    POST /login
-    Content-Type:
-
-    Response:
-
-  - Refresh Token
-    TODO !!
-  - Client Credentials
-    TODO !!
-
-- Scope
+  - `access_token`: The access token that the client can use to authenticate subsequent API requests.
+  - `expires_in`: The lifetime in seconds of the access token.
+    expired time depend on how high security is it can be 15 minutes for high-security application or 7 hours for low-security application (implement 1 hour)
+  - `token_type`: The type of the token issued (typically "Bearer").
 
 ### 3. Product Management
 
@@ -69,3 +55,16 @@ API using RFC 6749 -> https://datatracker.ietf.org/doc/html/rfc6749
 ### 11. Documentatio and Testing
 
 ### 12. Client ID
+
+is a unique identifier issued by the server when a new client (application) is registered. It's used to identify the client in subsequent requests to the server
+
+### 13. CLIENT SECRET
+
+TODO !!
+
+### 14. GRANT-TYPE
+
+- Authorization code
+- Password (Resource Owner Password Crendentials)
+- Refresh Token
+- Client Credentials
