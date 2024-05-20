@@ -4,9 +4,9 @@ API Spesification
 
 ### 1. Authentication
 
-- Client Registration
+- Generate Client Id And Client Secret
 
-  - Endpoint: POST /register
+  - Endpoint: POST /generateCredentials
   - Request Body:
     - `name`: name of the client
   - Response
@@ -68,3 +68,11 @@ TODO !!
 - Password (Resource Owner Password Crendentials)
 - Refresh Token
 - Client Credentials
+
+### 15. DATABASE DESIGN
+
+- clients
+  - client-id
+  - client-secret
+  - name
+  - created-date
