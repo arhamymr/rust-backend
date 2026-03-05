@@ -1,0 +1,11 @@
+{
+  "name": "rust-backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cargo watch -x run",
+    "build": "cargo build",
+    "lint": "cargo clippy",
+    "test": "cargo test"
+  }
+}
