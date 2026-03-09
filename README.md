@@ -23,7 +23,7 @@ A production-ready Rust backend template featuring Actix Web, SeaORM, and PASETO
 ## Requirements
 
 - Rust toolchain (installed via rustup)
-- PostgreSQL (recommended), or modify DB config to your target database
+- Docker & Docker Compose (for local PostgreSQL)
 - OpenSSL, Node.js, or Python for key generation (optional; dev can auto-generate)
 
 
@@ -43,11 +43,33 @@ cd rust-backend
 copy .env.example .env
 ```
 
-2) Configure environment variables
+2) Set up local PostgreSQL (recommended)
+
+```bash
+# Initialize database with migrations and seed data
+npm run db:setup
+
+# Individual commands if needed:
+# Start PostgreSQL container
+npm run db:up
+
+# Run migrations only
+npm run db:migrate
+
+# Seed with development data
+npm run db:seed
+```
+
+3) Configure environment variables
 
 Open .env and set the values. See the full list below. In dev, you may leave keys empty and set DEV_FALLBACK_KEYS=true to auto-generate ephemeral keys (not for production).
 
-3) Run the server
+For local development with Docker PostgreSQL, use this DATABASE_URL:
+```
+DATABASE_URL=postgres://default:zLfXyUm6g5Ax@localhost:5432/verceldb
+```
+
+4) Run the server
 
 ```bash
 # from project root
@@ -56,11 +78,30 @@ cargo run
 
 By default the server binds to 127.0.0.1:4444. Change via SERVER_PORT in .env.
 
-4) Run tests
+5) Run tests
 
 ```bash
 cargo test
 ```
+
+## Database Management
+
+The project includes Docker Compose for easy local PostgreSQL setup:
+
+### Quick Commands
+- `npm run db:up` - Start PostgreSQL container
+- `npm run db:down` - Stop PostgreSQL container
+- `npm run db:reset` - Reset database (delete data and restart)
+- `npm run db:setup` - Full setup: start DB and run migrations
+- `npm run db:migrate` - Run SeaORM migrations only
+- `npm run db:status` - Check container status
+
+### SQL Script Organization
+SQL scripts are organized in `scripts/sql/`:
+- `init/` - Initialization scripts (run on container first start)
+- `setup/` - Database setup scripts (indexes, roles, permissions)
+- `seed/` - Data seeding scripts (development/test data)
+- `maintenance/` - Maintenance scripts (cleanup, optimization)
 
 
 ## Environment Variables

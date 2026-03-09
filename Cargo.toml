@@ -27,4 +27,10 @@ argon2 = "0.5.3"
 chrono = { version = "0.4", features = ["serde"] }
 hex = "0.4.3"
 
+[workspace]
+members = [
+    ".",
+    "migration"
+]
+
 

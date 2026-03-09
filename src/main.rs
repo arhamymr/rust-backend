@@ -40,8 +40,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .service(auth::logout_all)
             .service(users::get_me)
             .service(users::update_me)
-            // Another API
 
+            // Another API
     })
     .bind(("127.0.0.1", 4444))?
     .run()

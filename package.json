@@ -6,6 +6,13 @@
     "dev": "cargo watch -x run",
     "build": "cargo build",
     "lint": "cargo clippy",
-    "test": "cargo test"
+    "test": "cargo test",
+    "db:up": "docker-compose up -d postgres",
+    "db:down": "docker-compose down",
+    "db:reset": "docker-compose down -v && docker-compose up -d postgres",
+    "db:migrate": "cargo run --bin migration",
+    "db:setup": "npm run db:up && sleep 5 && npm run db:migrate && npm run db:seed",
+    "db:seed": "docker-compose exec postgres psql -U default -d verceldb -c \"INSERT INTO \\\"user\\\" (id, name, email, email_verified, created_at, updated_at) VALUES (gen_random_uuid(), 'Demo User', 'demo@example.com', true, NOW(), NOW()) ON CONFLICT (id) DO NOTHING;\"",
+    "db:status": "docker-compose ps postgres"
   }
 }
