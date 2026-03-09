@@ -39,8 +39,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .service(auth::logout)
             .service(auth::logout_all)
             .service(users::get_me)
-            .service(users:: update_me)
-
+            .service(users::update_me)
             // Another API
 
     })
