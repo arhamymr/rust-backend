@@ -13,7 +13,6 @@ use crate::utils::hash::{hash_password, verify_password};
 use crate::utils::paseto::create_token;
 
 pub struct CreateUserData {
-    pub username: String,
     pub email: String,
     pub name: String,
     pub password: String,

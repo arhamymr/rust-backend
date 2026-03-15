@@ -4,7 +4,6 @@ use validator::{Validate, ValidationError};
 // POST /api/v1/auth/register
 // request example
 // {
-//      "username": "john_doe",
 //      "email": "john@example.com"
 //      "password": "securepassword123"
 //      "name": "John Doe"
@@ -16,9 +15,6 @@ use validator::{Validate, ValidationError};
 
 #[derive(Deserialize, Debug, Serialize, Validate)]
 pub struct RegisterRequest {
-    #[validate(length(min = 3, max = 50))]
-    pub username: String,
-
     #[validate(email)]
     pub email: String,
 

@@ -16,12 +16,10 @@ pub async fn register(
     
     // Create user data
     let user_data = CreateUserData {
-        username: data.username.clone(),
         email: data.email.clone(),
         name: data.name.clone(),
         password: data.password.clone(),
-    };
-    
+    };    
     // Create user with account
     match create_user_with_account(user_data, &db).await {
         Ok(()) => {
